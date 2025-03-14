@@ -9,7 +9,7 @@ use function count;
 use function getenv;
 use function is_string;
 
-function editorLink(string $file, int|string $line): string
+function editorLink(string $file, int|string $line = ''): string
 {
     $editors = [
         'sublime' => 'subl://open?url=file://%file&line=%line',
@@ -33,7 +33,11 @@ function editorLink(string $file, int|string $line): string
     if (! is_string($editor) || ! array_key_exists($editor, $editors)) {
         $editor = 'phpstorm';
     }
-    $format = $editors[$editor];
+    $format = getenv('EDITOR_LINK_FORMAT');
+    if ($format === false || $format === '') {
+        $format = $editors[$editor];
+    }
+
     if ($mapping = getenv('EDITOR_LINK_MAPPING')) {
         $paths = explode(':', $mapping);
         if (count($paths) === 2 && $paths[0] !== '' && $paths[1] !== '') {

@@ -8,8 +8,9 @@ arch()->preset()->php();
 arch()->preset()->security();
 
 beforeEach(function (): void {
-    putenv('EDITOR_LINK_EDITOR=');
-    putenv('EDITOR_LINK_MAPPING=');
+    putenv('EDITOR_LINK_EDITOR');
+    putenv('EDITOR_LINK_MAPPING');
+    putenv('EDITOR_LINK_FORMAT');
 });
 
 it('works without environment variables', function (): void {
@@ -33,6 +34,12 @@ it('uses fallback if editor is invalid', function (): void {
     putenv('EDITOR_LINK_EDITOR=invalid');
     expect(editorLink('/project/file.php', 10))
         ->toBe('phpstorm://open?file=/project/file.php&line=10');
+});
+
+it('can use a custom format', function (): void {
+    putenv('EDITOR_LINK_FORMAT=custom-protocol//open/%file:%line');
+    expect(editorLink('/project/file.php', 10))
+        ->toBe('custom-protocol//open//project/file.php:10');
 });
 
 it('can use valid editor', function (string $editor, string $expected): void {
