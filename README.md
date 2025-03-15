@@ -9,9 +9,6 @@
 
 # EditorLinks
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/mortenscheel/editor-links.svg?style=flat-square)](https://packagist.org/packages/mortenscheel/editor-links)
-[![Total Downloads](https://img.shields.io/packagist/dt/mortenscheel/editor-links.svg?style=flat-square)](https://packagist.org/packages/mortenscheel/editor-links)
-
 A lightweight PHP package that generates clickable links to open files directly in your preferred code editor.
 
 ## Installation

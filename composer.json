@@ -1,6 +1,6 @@
 {
     "name": "mortenscheel/editor-links",
-    "description": "A skeleton repository for my packages",
+    "description": "A lightweight PHP package that generates clickable links to open files directly in your preferred code editor.",
     "license": "MIT",
     "keywords": [
         "php",
